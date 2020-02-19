@@ -15,7 +15,7 @@
     text-align: center;
     padding: 14px 20px;
     text-decoration: none;
-    font-size: 4vh;
+    font-size: 3vh;
     top: 0px;
 }
 
@@ -29,8 +29,8 @@ body {
 }
 
 #logo {
-    height: 10vh;
-    width: 12vw;
+    height: 09vh;
+    width: 15vw;
     float: left;
     overflow: hidden;
 }
