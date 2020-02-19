@@ -1,0 +1,47 @@
+.topnav {
+    background-color: #333;
+    position: fixed;
+    width: 100%;
+    left: 0px;
+    top: 0px;
+    box-shadow: 3px 3px 4px #888888;
+    overflow: hidden;
+}
+
+.topnav a {
+    margin-left: 0px;
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    font-size: 4vh;
+    top: 0px;
+}
+
+.topnav a:hover {
+    background-color: rgb(46, 228, 219);
+    color: black;
+}
+
+body {
+    height: 2000px;
+}
+
+#logo {
+    height: 10vh;
+    width: 12vw;
+    float: left;
+    overflow: hidden;
+}
+
+p {
+    color: rgb(119, 253, 253);
+    font-size: 1.5vw;
+    font-style: italic;
+    float: right;
+}
+
+a {
+    font-size: 1vw;
+}
