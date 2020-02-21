@@ -4,14 +4,18 @@
     }
     
     .item {
-        height: 400px;
+        margin-left: 2%;
+        height: 50%;
         flex-wrap: wrap;
         width: 350px;
-        margin: 10px;
         padding: 1vw;
         text-align: center;
         line-height: 30px;
         font-size: 20px;
+    }
+    
+    .item+.item {
+        margin-left: 2%;
     }
     
     #item1,
@@ -33,29 +37,35 @@
     
     #readbutton {
         float: right;
-        background-color: rgb(52, 173, 52);
+        color: black;
+        background-color: rgb(62, 255, 136);
+        border-radius: 9px;
+        font-size: 15px;
     }
     
-    body {
-        height: 1000px;
+    #readbutton:hover {
+        box-shadow: 10px;
+        background-color: rgb(2, 158, 219);
+        color: white;
     }
     
     #addicon {
         position: fixed;
-        left: 97%;
-        font-size: 30px;
+        left: 95%;
+        font-size: 40px;
     }
     
     @media only screen and (max-width: 600px) {
         .container {
             display: flex;
             flex-direction: column;
+            align-items: center;
             width: 100%;
         }
         .item {
             flex-grow: 1;
-            height: 40%;
-            width: 65%;
+            height: 50%;
+            width: 70%;
             flex-wrap: wrap;
         }
         .item+.item {
@@ -74,12 +84,12 @@
         }
         h1 {
             font-size: 10vw 10vh;
-            padding-top: 35%;
+            padding-top: 15%;
         }
         #addicon {
-            left: 80%;
+            left: 90%;
             float: right;
             bottom: 100px;
-            font-size: 30px;
+            font-size: 40px;
         }
     }
