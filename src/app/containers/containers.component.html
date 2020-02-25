@@ -1,25 +1,36 @@
-<body>
-    <h1>Blogs</h1>
-    <div class="container">
-        <div class="item" id="item1">
-            <img id="img1" src="assets/images/Magento.jpg">
-            <h2>Exploring new features in Magento 2.3.4</h2>
-            <p>Magento has released some major enhancement packages as version 2.3.4 The pre release date was..</p>
-            <button id="readbutton">READ MORE</button>
-        </div>
-        <div class="item" id="item2">
-            <img id="img1" src="assets/images/CDP.jpg">
-            <h2>Can CDP's dolve Customer Data Puzzle?</h2>
-            <p>Achieving a single view of customer has been the holy grail for marketers.Why do so many...</p>
-            <button id="readbutton">READ MORE</button>
-        </div>
-        <div class="item" id="item3">
-            <img id="img1" src="assets/images/blog.jpg">
-            <h2>5 Universal Customer Segments for Marketing Personalization</h2>
-            <p>The outcome of personalized experience is simple--getting the right message to right audience at....</p>
-            <button id="readbutton">READ MORE</button>
-        </div>
+<!-- <h1>Blogs</h1>
+<div class="container">
+    <div class="item" id="item1">
+        <img id="img1" src="assets/images/Magento.jpg">
+        <h2>Exploring new features in Magento 2.3.4</h2>
+        <p>Magento has released some major enhancement packages as version 2.3.4 The pre release date was..</p>
+        <button id="readbutton">READ MORE</button>
     </div>
-    <br>
-    <mat-icon id="addicon" color="primary">add_circle</mat-icon>
-</body>
+    <div class="item" id="item2">
+        <img id="img1" src="assets/images/CDP.jpg">
+        <h2>Can CDP's dolve Customer Data Puzzle?</h2>
+        <p>Achieving a single view of customer has been the holy grail for marketers.Why do so many...</p>
+        <button id="readbutton">READ MORE</button>
+    </div>
+    <div class="item" id="item3">
+        <img id="img1" src="assets/images/blog.jpg">
+        <h2>5 Universal Customer Segments for Marketing Personalization</h2>
+        <p>The outcome of personalized experience is simple--getting the right message to right audience at....</p>
+        <button id="readbutton">READ MORE</button>
+    </div>
+</div>
+<br>
+<br>
+<br> -->
+<br>
+<br>
+<br>
+<div class="container">
+    <div class="item" id="item1" *ngFor="let data of cards">
+        <img id="img1" src="{{data.logo}}">
+        <h2>{{data.title}}</h2>
+        <p>{{data.content}}</p>
+        <button id="readbutton">READ MORE</button>
+    </div>
+</div>
+<mat-icon id="addicon" color="primary" routerLink="/add" routerLinkActive="active">add_circle</mat-icon>

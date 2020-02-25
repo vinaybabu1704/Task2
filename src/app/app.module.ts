@@ -1,27 +1,35 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, routingComponents } from './app-routing.module';
 import{ MatIconModule} from '@angular/material';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { ContainersComponent } from './containers/containers.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { AddCardComponent } from './add-card/add-card.component';
+import { ReactiveFormsModule,FormsModule} from '@angular/forms';
+import { EditcardComponent } from './editcard/editcard.component';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    ContainersComponent
+    ContainersComponent,
+    AddCardComponent,
+    routingComponents,
+    EditcardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatIconModule
+    MatIconModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   
   providers: [],
   bootstrap: [AppComponent]
+  
 })
 export class AppModule { 
   

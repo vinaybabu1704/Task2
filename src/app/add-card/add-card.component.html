@@ -1,0 +1,30 @@
+<form [formGroup]="dynamicForm" (ngSubmit)="onSubmit()">
+    <div class="mx-auto bg-primary" style="width:30%">
+        <div class="mt-5">
+            <div class="p-3">
+                <h2>Add New Card:</h2>
+                <div class="form-group">
+                    <h5>Title:</h5>
+                    <input type="text" formControlName="heading" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.heading.errors }" />
+                </div>
+                <div *ngIf="f.heading.errors?.required && f.touched" class="invalid-feedback">Title is required
+                </div>
+                <div class="form-group ">
+                    <h5>content:</h5>
+                    <textarea rows="4 " cols="50 " name="comment " form="dynamicForm " formControlName="content" class="form-control " [ngClass]="{ 'is-invalid': submitted && f.content.errors}">
+        Enter text here...</textarea>
+                </div>
+                <div *ngIf="f.content.errors?.required" class="invalid-feedback">
+                </div>
+                <div class="form-group ">
+                    <h5>Image:</h5>
+                    <input type="file" formControlName="img" class="form-control" />
+                </div>
+                <div class="mr-3 float-right ">
+                    <button id="save " class="btn btn-success" (click)="onSubmit()">Save</button>
+                </div>
+                <button id="cancel " class="btn btn-danger" routerLink="/home" routerLinkActive="active">Cancel</button>
+            </div>
+        </div>
+    </div>
+</form>
