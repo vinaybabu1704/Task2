@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators, FormControlName } from '@angular/forms';
-import {CardService} from '../card.service';
+import {CardService} from '../services/card.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-add-card',
@@ -10,16 +11,16 @@ import {CardService} from '../card.service';
 export class AddCardComponent implements OnInit {
   dynamicForm: FormGroup;
     submitted = false;
-    heading:FormControlName;
+    title:FormControlName;
     content:FormControlName;
-    img:FormControlName;
-
-    constructor(private formBuilder: FormBuilder) { }
+    logo:FormControlName;
+dataarray=[];
+    constructor(private formBuilder: FormBuilder, private cardService : CardService,private router:Router) { }
     ngOnInit() {
         this.dynamicForm = this.formBuilder.group({
-             heading: ['', Validators.required],
+             title: ['', Validators.required],
               content:['',Validators.required],
-              img:['',Validators.required]
+              logo:['']
         });
     }
 
@@ -27,9 +28,12 @@ export class AddCardComponent implements OnInit {
   
     onSubmit() {
         this.submitted = true;
-        console.log(this.dynamicForm.value);
-    }
-
+if(this.dynamicForm.valid){
+  this.cardService.dynamicCard.push(this.dynamicForm.value);
+  
+  this.router.navigate(['home']);
+}
+        }
     onReset() {
         
    }
