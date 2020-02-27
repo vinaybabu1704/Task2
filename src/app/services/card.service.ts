@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-
+import { CardInterface} from '../cardInterface';
 @Injectable({
   providedIn: 'root'
 })
 export class CardService {
-  
- dynamicCard=[{
+  dynamicCard: CardInterface[];
+ constructor( ) {
+ this.dynamicCard=[{
   title:"Explore new features in Magento 2.3.4",
   logo:"assets/images/Magento.jpg",
   content:"Magento has released some major enhancement packages as version 2.3.4 The pre release date was"
@@ -21,5 +22,5 @@ export class CardService {
   content:"The outcome of personalized experience is simple--getting the"
  }
 ];
-  constructor() { }
+  }
 }
