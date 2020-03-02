@@ -6,7 +6,7 @@
         <img id="img1" src="{{data.logo}}" onerror="this.src='assets/images/default.jpg';">
         <h2>{{data.title}}</h2>
         <p>{{data.content}}</p>
-        <button id="readbutton">READ MORE</button>
+        <button id="readbutton" (click)="Redirect(data)">READ MORE</button>
     </div>
 </div>
 

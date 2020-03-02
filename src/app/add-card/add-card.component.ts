@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators, FormControlName } from '@angular/forms';
 import {CardService} from '../services/card.service';
-import {Router} from '@angular/router';
+import {Router, ActivatedRoute, RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-add-card',
@@ -9,38 +9,52 @@ import {Router} from '@angular/router';
   styleUrls: ['./add-card.component.css']
 })
 export class AddCardComponent implements OnInit {
+  card:CardService;
   dynamicForm: FormGroup;
     submitted = false;
     title:FormControlName;
     content:FormControlName;
     logo:FormControlName;
+    id:number;
 dataarray=[];
-    constructor(private formBuilder: FormBuilder, private cardService : CardService,private router:Router) { }
+    constructor(private formBuilder: FormBuilder, private cardService : CardService,private router:Router,private route:ActivatedRoute) { }
+    
     ngOnInit() {
         this.dynamicForm = this.formBuilder.group({
              title: ['', Validators.required],
               content:['',Validators.required],
               logo:['']
         });
-    }
+        if( this.router.url != '/add'){
+        this.route.paramMap.subscribe(data => {
+          this.id = +data.get('id'); 
+          this.getdata(this.id);
+        });
+    }}
+    getdata(id:number){
+        this.dynamicForm.controls.title.setValue(this.cardService.getdata(id).title);
+        this.dynamicForm.controls.content.setValue(this.cardService.getdata(id).content);
+      }
+      delete(id:number){
+        this.cardService.delete(id);
+        this.router.navigate(['home']);
+      }
+    
 
     get f() { return this.dynamicForm.controls; }
   
     onSubmit() {
+      console.log("submit");
         this.submitted = true;
 if(this.dynamicForm.valid){
-  this.cardService.dynamicCard.push(this.dynamicForm.value);
-  
+  this.cardService.pushCard(this.dynamicForm.value);
   this.router.navigate(['home']);
 }
         }
-    onReset() {
-        
+   update(id:number){
+    var index= this.cardService.dynamicCard.findIndex(dynamicCard =>dynamicCard.id ===id);
+    this.cardService.dynamicCard[index]=this.dynamicForm.value;
+     this.router.navigate(['home']);
    }
-
-    onClear() {
-
-        this.submitted = false;
-     }
-}
+  }
 

@@ -20,10 +20,18 @@
                 </div>
                 <div *ngIf="f.content.errors?.required" class="invalid-feedback">
                 </div>
-                <div class="mr-3 float-right ">
-                    <button id="save " class="btn btn-success">Save</button>
+                <div *ngIf="router.url === '/add'">
+                    <div class="mr-3 float-right ">
+                        <button id="save " class="btn btn-success">Save</button>
+                    </div>
+                    <button type="button" id="cancel " class="btn btn-danger" routerLink="/home" routerLinkActive="active">Cancel</button>
                 </div>
-                <button id="cancel " class="btn btn-danger" routerLink="/home" routerLinkActive="active">Cancel</button>
+                <div *ngIf="router.url != '/add'">
+                    <div class="mr-3 float-right ">
+                        <button type="button" id="update" class="btn btn-success" (click)=update(id)>Update</button>
+                    </div>
+                    <button type="button" id="delete" class="btn btn-danger" (click)=delete(id)>Delete</button>
+                </div>
             </div>
         </div>
     </div>

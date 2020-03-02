@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CardService } from '../services/card.service'
+import { CardService } from '../services/card.service';
+import {Router} from '@angular/router';
+
 const DEFAULT_IMG='assets/images/default.jpg';
 @Component({
   selector: 'app-containers',
@@ -9,7 +11,7 @@ const DEFAULT_IMG='assets/images/default.jpg';
 export class ContainersComponent implements OnInit {
 cards=[];
 default_img:string;
-  constructor( private cardService : CardService) { 
+  constructor( private cardService : CardService, private router:Router) { 
     this.default_img=DEFAULT_IMG;
   }
 
@@ -17,5 +19,7 @@ default_img:string;
    this.cards=this.cardService.dynamicCard;
    
   }
-
+  Redirect(data) {
+    this.router.navigate(['edit',data.id]);
+ }
 }
