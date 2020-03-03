@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,Input} from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators, FormControlName } from '@angular/forms';
 import {CardService} from '../services/card.service';
 import {Router, ActivatedRoute, RouterLink} from '@angular/router';
@@ -16,7 +16,9 @@ export class AddCardComponent implements OnInit {
     content:FormControlName;
     logo:FormControlName;
     id:number;
+    mode:string;
 dataarray=[];
+ @Input() dynamicCard;
     constructor(private formBuilder: FormBuilder, private cardService : CardService,private router:Router,private route:ActivatedRoute) { }
     
     ngOnInit() {
@@ -25,7 +27,10 @@ dataarray=[];
               content:['',Validators.required],
               logo:['']
         });
-        if( this.router.url != '/add'){
+        this.route.data.subscribe((data:any) => {
+          this.mode=data;
+      })
+        if( this.mode != 'add'){
         this.route.paramMap.subscribe(data => {
           this.id = +data.get('id'); 
           this.getdata(this.id);
@@ -54,6 +59,7 @@ if(this.dynamicForm.valid){
    update(id:number){
     var index= this.cardService.dynamicCard.findIndex(dynamicCard =>dynamicCard.id ===id);
     this.cardService.dynamicCard[index]=this.dynamicForm.value;
+    this.cardService.dynamicCard[index].id =this.id;
      this.router.navigate(['home']);
    }
   }
