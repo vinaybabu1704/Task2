@@ -8,8 +8,7 @@ import { ParentComponent } from './parent/parent.component';
 const routes: Routes = [
     {path:'add',component: ParentComponent ,data:{mode:'add'}},
     {path:'home',component: ContainersComponent},
-    {path:'edit',component: ParentComponent,data:{mode:'edit'}},
-    {path:'edit/:id',component: ParentComponent,data:{mode:'id'}}
+    {path:'edit/:id',component: ParentComponent,data:{mode:'edit'}}
 ];
 
 @NgModule({

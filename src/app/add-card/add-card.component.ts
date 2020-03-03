@@ -28,7 +28,8 @@ dataarray=[];
               logo:['']
         });
         this.route.data.subscribe((data:any) => {
-          this.mode=data;
+          this.mode=data.mode;
+          console.log(this.mode);
       })
         if( this.mode != 'add'){
         this.route.paramMap.subscribe(data => {
@@ -37,9 +38,11 @@ dataarray=[];
         });
     }}
     getdata(id:number){
+         if(this.mode!='add'){
         this.dynamicForm.controls.title.setValue(this.cardService.getdata(id).title);
         this.dynamicForm.controls.content.setValue(this.cardService.getdata(id).content);
       }
+    }
       delete(id:number){
         this.cardService.delete(id);
         this.router.navigate(['home']);

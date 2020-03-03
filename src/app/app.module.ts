@@ -8,7 +8,6 @@ import { ContainersComponent } from './containers/containers.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddCardComponent } from './add-card/add-card.component';
 import { ReactiveFormsModule,FormsModule} from '@angular/forms';
-import { ParentComponent } from './parent/parent.component';
 
 @NgModule({
   declarations: [
@@ -17,8 +16,6 @@ import { ParentComponent } from './parent/parent.component';
     ContainersComponent,
     AddCardComponent,
     routingComponents,
-    ParentComponent,
- 
   ],
   imports: [
     BrowserModule,

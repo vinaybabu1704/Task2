@@ -5,7 +5,7 @@
                 <h2>Add New Card:</h2>
                 <div class="form-group">
                     <h5>Title:</h5>
-                    <input type="text" formControlName="title" id="Title" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.heading.errors }" />
+                    <input type="text" formControlName="title" id="Title" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.title.errors }" />
                 </div>
                 <div *ngIf="f.title.errors?.required && f.touched" class="invalid-feedback">Title is required
                 </div>
@@ -26,7 +26,7 @@
                     </div>
                     <button type="button" id="cancel " class="btn btn-danger" routerLink="/home" routerLinkActive="active">Cancel</button>
                 </div>
-                <div *ngIf="mode != 'add'">
+                <div *ngIf="mode === 'edit'">
                     <div class="mr-3 float-right ">
                         <button type="button" id="update" class="btn btn-success" (click)=update(id)>Update</button>
                     </div>
