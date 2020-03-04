@@ -1,6 +1,5 @@
-import { Component, OnInit ,Input} from '@angular/core';
+import { Component, OnInit ,Input,Output,EventEmitter} from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators, FormControlName } from '@angular/forms';
-import {CardService} from '../services/card.service';
 import {Router, ActivatedRoute, RouterLink} from '@angular/router';
 
 @Component({
@@ -9,7 +8,7 @@ import {Router, ActivatedRoute, RouterLink} from '@angular/router';
   styleUrls: ['./add-card.component.css']
 })
 export class AddCardComponent implements OnInit {
-  card:CardService;
+  
   dynamicForm: FormGroup;
     submitted = false;
     title:FormControlName;
@@ -19,7 +18,9 @@ export class AddCardComponent implements OnInit {
     mode:string;
 dataarray=[];
  @Input() dynamicCard;
-    constructor(private formBuilder: FormBuilder, private cardService : CardService,private router:Router,private route:ActivatedRoute) { }
+ @Output() updateEvent = new EventEmitter<object>();
+ 
+    constructor(private formBuilder: FormBuilder,private router:Router,private route:ActivatedRoute) { }
     
     ngOnInit() {
         this.dynamicForm = this.formBuilder.group({
@@ -39,12 +40,13 @@ dataarray=[];
     }}
     getdata(id:number){
          if(this.mode!='add'){
-        this.dynamicForm.controls.title.setValue(this.cardService.getdata(id).title);
-        this.dynamicForm.controls.content.setValue(this.cardService.getdata(id).content);
+        var cardindex=this.dynamicCard.findIndex(dynamicCard =>dynamicCard.id ===id);
+        this.dynamicForm.controls.title.setValue(this.dynamicCard[cardindex].title);
+        this.dynamicForm.controls.content.setValue(this.dynamicCard[cardindex].content);
       }
     }
       delete(id:number){
-        this.cardService.delete(id);
+        this.deleteid(id);
         this.router.navigate(['home']);
       }
     
@@ -55,15 +57,27 @@ dataarray=[];
       console.log("submit");
         this.submitted = true;
 if(this.dynamicForm.valid){
-  this.cardService.pushCard(this.dynamicForm.value);
+  this.pushCard(this.dynamicForm.value);
   this.router.navigate(['home']);
 }
         }
    update(id:number){
-    var index= this.cardService.dynamicCard.findIndex(dynamicCard =>dynamicCard.id ===id);
-    this.cardService.dynamicCard[index]=this.dynamicForm.value;
-    this.cardService.dynamicCard[index].id =this.id;
+    var index= this.dynamicCard.findIndex(dynamicCard =>dynamicCard.id ===id);
+    var logo=this.dynamicCard[index].logo;
+    this.dynamicCard[index]=this.dynamicForm.value;
+      this.dynamicCard[index].logo=logo;
+    this.dynamicCard[index].id =this.id;
+    this.updateEvent.emit(this.dynamicCard);
      this.router.navigate(['home']);
    }
+   pushCard(card){
+    var len= this.dynamicCard.length;
+    card.id=len+1;
+    this.dynamicCard.push(card);
+    }
+    deleteid(id:number){
+      var index= this.dynamicCard.findIndex(dynamicCard =>dynamicCard.id ===id);
+      this.dynamicCard.splice(index,1);
+    }
   }
 

@@ -25,16 +25,4 @@ export class CardService {
  ]; 
  constructor( ) {
  }
-  pushCard(card){
-  var len= this.dynamicCard.length;
-  card.id=len+1;
-  this.dynamicCard.push(card);
   }
-  getdata(id:number){
-    return this.dynamicCard.find(dynamicCard => dynamicCard.id === id);
-  }
-  delete(id:number){
-    var index= this.dynamicCard.findIndex(dynamicCard =>dynamicCard.id ===id);
-    this.dynamicCard.splice(index,1);
-  }
-}

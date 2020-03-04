@@ -11,5 +11,10 @@ export class ParentComponent implements OnInit {
    dynamicCard=this.cardService.dynamicCard;
   ngOnInit() {
   }
+  update(card){
+    this.cardService.dynamicCard=card;
+    console.log(card);
+    //  this.router.navigate(['home']);
+   }
 
 }

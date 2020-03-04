@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddCardComponent } from './add-card/add-card.component';
 import { ReactiveFormsModule,FormsModule} from '@angular/forms';
 
+
 @NgModule({
   declarations: [
     AppComponent,

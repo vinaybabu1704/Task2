@@ -10,6 +10,7 @@ const DEFAULT_IMG='assets/images/default.jpg';
 })
 export class ContainersComponent implements OnInit {
 cards=[];
+searchTerm: string;
 default_img:string;
   constructor( private cardService : CardService, private router:Router) { 
     this.default_img=DEFAULT_IMG;

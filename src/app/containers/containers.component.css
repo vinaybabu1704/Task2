@@ -61,6 +61,10 @@
         font-size: 40px;
     }
     
+    #addicon:hover {
+        font-size: 45px;
+    }
+    
     p {
         font-size: medium;
     }
