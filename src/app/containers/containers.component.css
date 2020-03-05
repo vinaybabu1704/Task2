@@ -46,6 +46,7 @@
         background-color: #6ee7eb;
         border-radius: 4px;
         font-size: 15px;
+        cursor: pointer;
     }
     
     #readbutton:hover {
@@ -59,6 +60,7 @@
         bottom: 50px;
         right: 60px;
         font-size: 40px;
+        cursor: pointer;
     }
     
     #addicon:hover {

@@ -20,6 +20,12 @@
                 </div>
                 <div *ngIf="f.content.errors?.required" class="invalid-feedback">
                 </div>
+                <button type="button" (click)="addAddress()">Add Address</button>
+                <div *ngFor="let tag of tags; let i = index">
+                    <input type="text">
+                    <i class="material-icons align-middle text-danger" (click)="removeAddress(i)">remove_circle</i>
+
+                </div>
                 <div *ngIf="mode === 'add'">
                     <div class="mr-3 float-right ">
                         <button id="save " class="btn btn-success">Save</button>

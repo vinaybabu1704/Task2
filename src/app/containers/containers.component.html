@@ -1,7 +1,6 @@
 <br>
 <br>
 <br>
-<input type="text" placeholder="search by title" [(ngModel)]="searchTerm" />
 <div class="container">
     <div class="item" id="item1" *ngFor="let data of cards">
         <img id="img1" src="{{data.logo}}" onerror="this.src='assets/images/default.jpg';">
@@ -10,4 +9,5 @@
         <button id="readbutton" (click)="Redirect(data)">READ MORE</button>
     </div>
 </div>
-<mat-icon id="addicon" color="primary" routerLink="/add" routerLinkActive="active">add_circle</mat-icon>
+<button><mat-icon id="addicon" color="primary" routerLink="/add" routerLinkActive="active">add_circle</mat-icon>
+</button>

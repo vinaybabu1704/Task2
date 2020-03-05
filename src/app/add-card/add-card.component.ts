@@ -1,5 +1,5 @@
 import { Component, OnInit ,Input,Output,EventEmitter} from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, Validators, FormControlName } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray,FormsModule, Validators, FormControlName } from '@angular/forms';
 import {Router, ActivatedRoute, RouterLink} from '@angular/router';
 
 @Component({
@@ -16,6 +16,9 @@ export class AddCardComponent implements OnInit {
     logo:FormControlName;
     id:number;
     mode:string;
+    tags: any[] = [{
+      fields: ''
+      }];
 dataarray=[];
  @Input() dynamicCard;
  @Output() updateEvent = new EventEmitter<object>();
@@ -41,9 +44,15 @@ dataarray=[];
     getdata(id:number){
          if(this.mode!='add'){
         var cardindex=this.dynamicCard.findIndex(dynamicCard =>dynamicCard.id ===id);
+        if(cardindex!=-1){
         this.dynamicForm.controls.title.setValue(this.dynamicCard[cardindex].title);
         this.dynamicForm.controls.content.setValue(this.dynamicCard[cardindex].content);
       }
+      else{
+        this.router.navigate(['home']);
+      }
+    }
+     
     }
       delete(id:number){
         this.deleteid(id);
@@ -79,5 +88,14 @@ if(this.dynamicForm.valid){
       var index= this.dynamicCard.findIndex(dynamicCard =>dynamicCard.id ===id);
       this.dynamicCard.splice(index,1);
     }
+    addAddress() {
+      this.tags.push({
+      fields: ''
+      });
+      }
+      removeAddress(i: number) {
+        if(i!=0)
+        this.tags.splice(i, 1);
+        }
   }
 
